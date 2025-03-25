@@ -1,0 +1,35 @@
+<div class="card shadow-lg border-0">
+    <div class="card-header bg-dark text-white">
+      <h5 class="mb-0">📖 Saved Addresses</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th>Full Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Pin Code</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let address of addresses">
+            <td>{{ address.fullName }}</td>
+            <td>{{ address.phoneNumber }}</td>
+            <td>{{ address.address }}</td>
+            <td>{{ address.state }}</td>
+            <td>{{ address.city }}</td>
+            <td>{{ address.pinCode }}</td>
+            <td>
+              <button class="btn btn-warning btn-sm me-2" (click)="onEdit(address)">✏️ Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="onDelete(address.id)">🗑 Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

@@ -1,0 +1,23 @@
+/* ✅ Card background */
+.card {
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+  
+  /* ✅ Form input styling */
+  .form-control-lg {
+    border-radius: 8px;
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+  
+  /* ✅ Button hover effect */
+  .btn:hover {
+    opacity: 0.85;
+  }
+  
+  /* ✅ Spacing between elements */
+  .mb-3 {
+    margin-bottom: 20px !important;
+  }
+  

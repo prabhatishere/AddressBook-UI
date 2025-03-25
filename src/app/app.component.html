@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <h2 class="text-primary">📖 Address Book</h2>
+
+  <button class="btn btn-success mb-3" (click)="toggleForm()">➕ Add Contact</button>
+  <button class="btn btn-primary mb-3" (click)="fetchAddresses()">🔄 Refresh</button>
+
+  <!-- ✅ Add/Edit Contact Form -->
+  <div *ngIf="showForm()" class="card p-3 mb-4">
+    <h4>{{ isEditing() ? '✏️ Edit Contact' : '➕ Add Contact' }}</h4>
+    <form (ngSubmit)="saveContact()">
+      <div class="mb-2">
+        <label>Full Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="contact().name" name="name" required />
+      </div>
+      <div class="mb-2">
+        <label>Email:</label>
+        <input type="email" class="form-control" [(ngModel)]="contact().email" name="email" required />
+      </div>
+      <div class="mb-2">
+        <label>Phone:</label>
+        <input type="text" class="form-control" [(ngModel)]="contact().phone" name="phone" />
+      </div>
+      <button type="submit" class="btn btn-primary">💾 {{ isEditing() ? 'Update' : 'Save' }}</button>
+      <button type="button" class="btn btn-secondary ms-2" (click)="toggleForm()">❌ Cancel</button>
+    </form>
+  </div>
+
+  <!-- ✅ Address Table -->
+  <table class="table table-bordered table-hover" *ngIf="addresses().length > 0; else noData">
+    <thead class="table-dark text-white">
+      <tr>
+        <th>Full Name</th>
+        <th>Phone</th>
+        <th>Email (Address)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let address of addresses()">
+        <td>{{ address?.name || 'N/A' }}</td>
+        <td>{{ address?.phone || 'N/A' }}</td>
+        <td>{{ address?.email || 'N/A' }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="editAddress(address)">✏️ Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteAddress(address.id)">🗑 Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p class="text-center text-muted">No contacts found.</p>
+  </ng-template>
+</div>

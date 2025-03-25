@@ -1,0 +1,57 @@
+<div class="card p-4 shadow-lg">
+    <h3 class="text-center text-primary">
+      {{ selectedAddress ? '✏️ Edit Address' : '➕ Add New Address' }}
+    </h3>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Full Name</label>
+          <input type="text" class="form-control" [(ngModel)]="address.fullName" name="fullName" required 
+                 placeholder="Enter full name" />
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label class="form-label fw-bold">Phone Number</label>
+          <input type="tel" class="form-control" [(ngModel)]="address.phoneNumber" name="phoneNumber" required 
+                 placeholder="Enter phone number" />
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label class="form-label fw-bold">Address</label>
+        <textarea class="form-control" [(ngModel)]="address.address" name="address" required 
+                  placeholder="Enter full address"></textarea>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-bold">State</label>
+          <input type="text" class="form-control" [(ngModel)]="address.state" name="state" required 
+                 placeholder="Enter state" />
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-bold">City</label>
+          <input type="text" class="form-control" [(ngModel)]="address.city" name="city" required 
+                 placeholder="Enter city" />
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label class="form-label fw-bold">Pin Code</label>
+          <input type="text" class="form-control" [(ngModel)]="address.pinCode" name="pinCode" required 
+                 placeholder="Enter pin code" />
+        </div>
+      </div>
+  
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-success me-2">
+          {{ selectedAddress ? '✔️ Update' : '➕ Add' }} Address
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">
+          🔄 Reset
+        </button>
+      </div>
+    </form>
+  </div>
+  
